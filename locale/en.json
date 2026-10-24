@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Session Remote Backup",
+    "description": "Incrementally back up session logs, attachments and metadata to WebDAV or a folder: file-level SHA-256 dedupe, pluggable targets, progress and restore in the settings page."
+  }
+}

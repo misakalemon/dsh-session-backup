@@ -1,0 +1,16 @@
+node_modules/
+.tmp/
+*.log
+
+# Local runtime state (never committed): the plugin writes these under $DSH_HOME
+config.json
+state.json
+state.json.tmp
+history.jsonl
+*.lock
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

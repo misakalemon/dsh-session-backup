@@ -1,0 +1,34 @@
+# Host-only bundle: one row that activates the session backup plugin.
+# All tunables live in `config` so a user patch layer can override them:
+#   - id: session-backup
+#     name: '@local/dsh-session-backup'
+#     config:
+#       target: webdav
+#       remote:
+#         url: https://nas.example.com/remote.php/dav/files/me/dsh-backup
+#         username: me
+# The settings page writes `config.json` into the state directory with the same
+# shape; values saved there win over the ones below.
+- insert:
+    - id: session-backup
+      name: '@local/dsh-session-backup'
+      config:
+        enabled: true
+        target: webdav
+        # 'mirror' = one object per file (incremental); 'zip' = one archive per
+        # run (self-contained, re-sent in full when anything changed).
+        archiveMode: mirror
+        archiveKeep: 3
+        remote:
+          url: ''
+          root: ''
+          username: ''
+          usernameRef: DSH_BACKUP_USERNAME
+          passwordRef: DSH_BACKUP_PASSWORD
+          timeoutSeconds: 30
+        scope:
+          sessions: true
+          attachments: true
+          storages: true
+          maxAttachmentMB: 64
+          maxFileMB: 512
